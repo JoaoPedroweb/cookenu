@@ -6,6 +6,10 @@ export const theme = extendTheme({
             variants: {
                 header: {
                     bg: "laranja.500"
+                },
+                form: {
+                    width: "100%",
+                    bg: "laranja.500"
                 }
             }
         }
