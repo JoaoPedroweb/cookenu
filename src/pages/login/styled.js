@@ -18,7 +18,7 @@ export const FormContainer = styled.div`
     border-radius: 10px;
     padding: 10px;
 
-    input, p{
+    input, p, button {
         margin-bottom: 10px;
     }
 `;

@@ -79,7 +79,8 @@ export const LoginPage = () => {
                             </FormErrorMessage>
                         ) : undefined}
                     </FormControl>
-                    <Button type="submit" variant="form">Enviar</Button>
+                    <Button type="submit" variant="formMain">Entrar</Button>
+                    <Button type="button" variant="formSecondary">Não possui conta? Cadastrar</Button>
                 </form>
             </FormContainer>
         </LoginPageContainer>
