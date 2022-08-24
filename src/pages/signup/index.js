@@ -12,8 +12,15 @@ import {
     Button
 } from '@chakra-ui/react';
 import logo from '../../assets/logo.png'
+import { Signup } from '../../constants';
+import {
+    goToFeedPage
+} from '../../routes';
+import { useNavigate } from 'react-router-dom';
 
 export const SignupPage = () => {
+
+    const navigate = useNavigate();
 
     const [ form, onChangeInputs, clearInputs ] = useForm({
         email: "",
@@ -24,12 +31,23 @@ export const SignupPage = () => {
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [isNameValid, setIsNameValid] = useState(true);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.password));
         setIsNameValid(validateName(form.name));
+        try {
+            const { token } = isNameValid && isEmailValid && isPasswordValid && await Signup({
+                email: form.email,
+                password: form.password,
+                name: form.name
+            });
+            localStorage.setItem("cookenu.token", token);
+            goToFeedPage(navigate);
+        } catch(e) {
+            console.log(e)
+            alert(e.response.data.message)
+        }
     }
 
     return (

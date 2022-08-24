@@ -10,9 +10,16 @@ import {
 import {
     Button
 } from '@chakra-ui/react';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
+import { useNavigate } from 'react-router-dom';
+import {
+    goToSignupPage,
+    goToFeedPage
+} from '../../routes';
+import { Login } from '../../constants';
 
 export const LoginPage = () => {
+    const navigate = useNavigate();
 
     const [ form, onChangeInputs, clearInputs ] = useForm({
         email: "",
@@ -21,11 +28,20 @@ export const LoginPage = () => {
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(form);
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.password));
+        try {
+            const { token } = isEmailValid && isPasswordValid && await Login({
+                email: form.email,
+                password: form.password
+            });
+            localStorage.setItem("cookenu.token", token);
+            goToFeedPage(navigate);
+        } catch(e) {
+            alert(e.response.data)
+        }
     }
 
     return (
@@ -44,7 +60,7 @@ export const LoginPage = () => {
                         isValid={isPasswordValid}
                     />
                     <Button type="submit" variant="formMain">Entrar</Button>
-                    <Button type="button" variant="formSecondary">Não possui conta? Cadastrar</Button>
+                    <Button onClick={() => goToSignupPage(navigate)} type="button" variant="formSecondary">Não possui conta? Cadastrar</Button>
                 </form>
             </FormContainer>
         </LoginPageContainer>
