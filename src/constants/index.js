@@ -12,6 +12,18 @@ export const Signup = async (body) => {
     return data;
 }
 
+export const ListRecipes = async () => {
+    const { data } = await axios.get(
+        `${BASE_URL}/recipe/feed`,
+        {
+            headers: {
+                Authorization: localStorage.getItem("cookenu.token")
+            }
+        }
+    );
+    return data;
+}
+
 export const validateEmail = email => /[a-zA-Z0-9]+@[a-z]{3}[.a-z]?/.test(email);
 export const validatePassword = password => /.{6,}/.test(password);
 export const validateName = name => /.{2,}/.test(name);

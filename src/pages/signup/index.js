@@ -70,7 +70,7 @@ export const SignupPage = () => {
                         onChange={onChangeInputs}
                         isValid={isPasswordValid}
                     />
-                    <Button type="submit" variant="formMain">Cadastrar</Button>
+                    <Button type="submit" variant="form-main">Cadastrar</Button>
                 </form>
             </FormContainer>
         </SignupPageContainer>

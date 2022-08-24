@@ -40,7 +40,7 @@ export const LoginPage = () => {
             localStorage.setItem("cookenu.token", token);
             goToFeedPage(navigate);
         } catch(e) {
-            alert(e.response.data)
+            alert(e.response.data.message)
         }
     }
 
@@ -59,8 +59,8 @@ export const LoginPage = () => {
                         onChange={onChangeInputs}
                         isValid={isPasswordValid}
                     />
-                    <Button type="submit" variant="formMain">Entrar</Button>
-                    <Button onClick={() => goToSignupPage(navigate)} type="button" variant="formSecondary">Não possui conta? Cadastrar</Button>
+                    <Button type="submit" variant="form-main">Entrar</Button>
+                    <Button onClick={() => goToSignupPage(navigate)} type="button" variant="form-secondary">Não possui conta? Cadastrar</Button>
                 </form>
             </FormContainer>
         </LoginPageContainer>

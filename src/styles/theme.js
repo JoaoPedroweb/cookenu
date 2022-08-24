@@ -7,7 +7,7 @@ export const theme = extendTheme({
                 header: {
                     bg: "laranja.500"
                 },
-                formMain: {
+                "form-main": {
                     width: "100%",
                     bg: "laranja.500",
                     color: "white",
@@ -17,7 +17,7 @@ export const theme = extendTheme({
                         border: "3px solid #FE7E02"
                     }
                 },
-                formSecondary: {
+                "form-secondary": {
                     width: "100%",
                     bg: "white",
                     color: "laranja.500",
@@ -28,6 +28,20 @@ export const theme = extendTheme({
                         border: "1px solid grey",
                     }
                 },
+                "add-recipe": {
+                    borderRadius: '50%',
+                    fontSize: "2rem",
+                    width: "30px",
+                    padding: "5px",
+                    bg: "laranja.500",
+                    position: "fixed",
+                    bottom: "15px",
+                    right: "15px",
+                    transition: "0.5s",
+                    _hover: {
+                        transform: "scale(1.05)"
+                    }
+                }
             }
         }
     },
