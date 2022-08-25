@@ -24,6 +24,18 @@ export const ListRecipes = async () => {
     return data;
 }
 
+export const GetRecipe = async (id) => {
+    const { data } = await axios.get(
+        `${BASE_URL}/recipe/${id}`,
+        {
+            headers: {
+                Authorization: localStorage.getItem("cookenu.token")
+            }
+        }
+    );
+    return data;
+}
+
 export const AddRecipe = async (body) => {
     axios.post()
     const { data } = await axios.post(
