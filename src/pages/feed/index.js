@@ -2,7 +2,8 @@ import { FeedContainerStyled, RecipeCardStyled } from "./styled";
 import { useEffect, useState } from "react";
 import { ListRecipes } from '../../constants';
 import {
-    goToRecipeDetailPage
+    goToRecipeDetailPage,
+    goToAddRecipePage
 } from '../../routes';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -26,8 +27,11 @@ export const FeedPage = () => {
     }, []);
 
     const onClickCard = (id) => {
-        console.log(id)
         goToRecipeDetailPage(navigate,id);
+    }
+
+    const onClickAddButton = () => {
+        goToAddRecipePage(navigate);
     }
     return (
         <FeedContainerStyled>
@@ -37,7 +41,7 @@ export const FeedPage = () => {
                     <h3>{recipe.title}</h3>
                 </RecipeCardStyled>
             ))}
-            <Button variant="add-recipe">+</Button>
+            <Button onClick={() => onClickAddButton()} variant="add-recipe">+</Button>
         </FeedContainerStyled>
     )
 }
