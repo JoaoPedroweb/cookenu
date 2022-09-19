@@ -13,6 +13,8 @@ import {
 } from '@chakra-ui/react';
 import { AddRecipe } from '../../constants';
 import { PageTitleStyled } from './styled';
+import { useNavigate } from 'react-router-dom';
+import { useProtectedPage } from '../../hooks';
 
 export const AddRecipePage = () => {
 
@@ -21,6 +23,9 @@ export const AddRecipePage = () => {
         title: "",
         image: ""
     });
+
+    const navigate = useNavigate();
+    useProtectedPage(navigate);
 
     const [isTitleValid, setIsTitleValid] = useState(true);
     const [isUrlValid, setIsUrlValid] = useState(true);

@@ -2,12 +2,17 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { GetRecipe } from '../../constants';
 import { PageContainer } from './style';
+import { useNavigate } from 'react-router-dom';
+import { useProtectedPage } from '../../hooks';
 
 export const RecipeDetailPage = () => {
 
     const { id } = useParams();
     const [recipe, setRecipe] = useState();
 
+    const navigate = useNavigate();
+    useProtectedPage(navigate);
+    
     useEffect(() => {
         GetRecipe(id)
         .then(recipe => {

@@ -3,17 +3,19 @@ import { useEffect, useState } from "react";
 import { ListRecipes } from '../../constants';
 import {
     goToRecipeDetailPage,
-    goToAddRecipePage
+    goToAddRecipePage,
 } from '../../routes';
 import { useNavigate } from 'react-router-dom';
 import {
     Button
 } from '@chakra-ui/react';
+import { useProtectedPage } from '../../hooks';
 
 export const FeedPage = () => {
 
     const navigate = useNavigate();
-
+    useProtectedPage(navigate);
+    
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
@@ -25,6 +27,8 @@ export const FeedPage = () => {
             console.log(e)
         })
     }, []);
+
+
 
     const onClickCard = (id) => {
         goToRecipeDetailPage(navigate,id);

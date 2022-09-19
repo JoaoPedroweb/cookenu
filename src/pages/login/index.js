@@ -18,7 +18,7 @@ import {
 } from '../../routes';
 import { Login } from '../../constants';
 
-export const LoginPage = () => {
+export const LoginPage = ({ setIsLoggedIn }) => {
     const navigate = useNavigate();
 
     const [ form, onChangeInputs, clearInputs ] = useForm({
@@ -39,6 +39,7 @@ export const LoginPage = () => {
             });
             localStorage.setItem("cookenu.token", token);
             goToFeedPage(navigate);
+            setIsLoggedIn(true);
         } catch(e) {
             alert(e.response.data.message)
         }
